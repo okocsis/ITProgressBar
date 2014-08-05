@@ -20,6 +20,8 @@
 		91C3B66F181AA41400769A5A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91C3B64E181AA41400769A5A /* Cocoa.framework */; };
 		91C3B677181AA41400769A5A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91C3B675181AA41400769A5A /* InfoPlist.strings */; };
 		91C3B679181AA41400769A5A /* ITProgressBarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C3B678181AA41400769A5A /* ITProgressBarTests.m */; };
+		C374950B1990FB0700220CB5 /* ITWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = C37495091990FB0700220CB5 /* ITWindowController.m */; };
+		C374950C1990FB0700220CB5 /* ITWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C374950A1990FB0700220CB5 /* ITWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		91C3B674181AA41400769A5A /* ITProgressBarTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ITProgressBarTests-Info.plist"; sourceTree = "<group>"; };
 		91C3B676181AA41400769A5A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91C3B678181AA41400769A5A /* ITProgressBarTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ITProgressBarTests.m; sourceTree = "<group>"; };
+		C37495081990FB0700220CB5 /* ITWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITWindowController.h; sourceTree = "<group>"; };
+		C37495091990FB0700220CB5 /* ITWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITWindowController.m; sourceTree = "<group>"; };
+		C374950A1990FB0700220CB5 /* ITWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ITWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +130,9 @@
 				91C3B682181AA41E00769A5A /* ITProgressBar */,
 				91C3B660181AA41400769A5A /* ITAppDelegate.h */,
 				91C3B661181AA41400769A5A /* ITAppDelegate.m */,
+				C37495081990FB0700220CB5 /* ITWindowController.h */,
+				C37495091990FB0700220CB5 /* ITWindowController.m */,
+				C374950A1990FB0700220CB5 /* ITWindowController.xib */,
 				91C3B663181AA41400769A5A /* MainMenu.xib */,
 				91C3B666181AA41400769A5A /* Images.xcassets */,
 				91C3B655181AA41400769A5A /* Supporting Files */,
@@ -250,6 +258,7 @@
 			files = (
 				91C3B659181AA41400769A5A /* InfoPlist.strings in Resources */,
 				91C3B667181AA41400769A5A /* Images.xcassets in Resources */,
+				C374950C1990FB0700220CB5 /* ITWindowController.xib in Resources */,
 				91C3B65F181AA41400769A5A /* Credits.rtf in Resources */,
 				91C3B665181AA41400769A5A /* MainMenu.xib in Resources */,
 			);
@@ -270,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C374950B1990FB0700220CB5 /* ITWindowController.m in Sources */,
 				917F43171821AB7500F1C684 /* ITProgressBar.m in Sources */,
 				91C3B65B181AA41400769A5A /* main.m in Sources */,
 				91C3B662181AA41400769A5A /* ITAppDelegate.m in Sources */,

@@ -52,6 +52,8 @@
 @property (strong, nonatomic, readonly) CALayer *innerClipLayer;
 @property (strong, nonatomic, readonly) CALayer *innerShadowLayer;
 @property (strong, nonatomic, readonly) CALayer *colorTintLayer;
+
+
 @end
 
 
@@ -88,6 +90,7 @@
 
 - (void)setUp {
     // Initial values
+    _cornerRadius = 5.;
     _borderWidth = 1.0;
     _borderColor = [NSColor colorWithCalibratedRed: 0.291 green: 0.291 blue: 0.291 alpha: 1];
     _shadowWidth = 1.0;
@@ -153,7 +156,8 @@
     {
         // Clip Layer
         self.clipLayer.frame = self.bounds;
-        self.clipLayer.cornerRadius = (self.clipLayer.frame.size.height / 2);
+//        self.clipLayer.cornerRadius = (self.clipLayer.frame.size.height / 2);
+        self.clipLayer.cornerRadius = _cornerRadius;
         
         [self resizeInnerLayers];
         
@@ -190,10 +194,12 @@
     self.innerClipLayer.frame = (NSRect){ self.innerClipLayer.frame.origin,
                                           self.innerClipLayer.frame.size.width * self.floatValue,
                                           self.innerClipLayer.frame.size.height };
-    self.innerClipLayer.cornerRadius = (self.innerClipLayer.frame.size.height / 2);
+//    self.innerClipLayer.cornerRadius = (self.innerClipLayer.frame.size.height / 2);
+    self.innerClipLayer.cornerRadius = _cornerRadius;
     
     self.innerShadowLayer.frame = NSInsetRect(self.innerClipLayer.bounds, -self.borderWidth, -self.borderWidth);
-    self.innerShadowLayer.cornerRadius = (self.innerShadowLayer.frame.size.height / 2);
+//    self.innerShadowLayer.cornerRadius = (self.innerShadowLayer.frame.size.height / 2);
+    self.innerShadowLayer.cornerRadius = _cornerRadius;
     self.innerShadowLayer.contents = [self borderImageForSize:self.innerShadowLayer.frame.size withInnerShadow:YES];
 }
 
@@ -411,24 +417,27 @@
     
     return [NSImage imageWithSize:size flipped:NO drawingHandler:^BOOL(NSRect dstRect) {
         //// Color Declarations
-        NSColor* innerShadowColor = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
+//        NSColor* innerShadowColor = [NSColor colorWithCalibratedRed: 1 green: 1 blue: 1 alpha: 1];
         
-        //// Shadow Declarations
-        NSShadow* innerShadow = [[NSShadow alloc] init];
-        [innerShadow setShadowColor: [innerShadowColor colorWithAlphaComponent: 0.6]];
-        [innerShadow setShadowOffset: NSMakeSize(0, -self.shadowWidth)];
-        [innerShadow setShadowBlurRadius: 0];
+//        //// Shadow Declarations
+//        NSShadow* innerShadow = [[NSShadow alloc] init];
+//        [innerShadow setShadowColor: [innerShadowColor colorWithAlphaComponent: 0.6]];
+//        [innerShadow setShadowOffset: NSMakeSize(0, -self.shadowWidth)];
+//        [innerShadow setShadowBlurRadius: 0];
         
         //// Frames
         NSRect baseFrame = (NSRect){ NSZeroPoint, size };
         
         
         //// BorderPath Drawing
-        NSBezierPath* borderPathPath = [NSBezierPath bezierPathWithRoundedRect: NSMakeRect(NSMinX(baseFrame) + (self.borderWidth / 2), NSMinY(baseFrame) + (self.borderWidth / 2), NSWidth(baseFrame) - self.borderWidth, NSHeight(baseFrame) - self.borderWidth) xRadius:(baseFrame.size.height / 2) yRadius:(baseFrame.size.height / 2)];
+//        NSBezierPath* borderPathPath = [NSBezierPath bezierPathWithRoundedRect: NSMakeRect(NSMinX(baseFrame) + (self.borderWidth / 2), NSMinY(baseFrame) + (self.borderWidth / 2), NSWidth(baseFrame) - self.borderWidth, NSHeight(baseFrame) - self.borderWidth) xRadius:(baseFrame.size.height / 2) yRadius:(baseFrame.size.height / 2)];
+        NSBezierPath* borderPathPath = [NSBezierPath bezierPathWithRoundedRect: NSMakeRect(NSMinX(baseFrame) + (self.borderWidth / 2), NSMinY(baseFrame) + (self.borderWidth / 2), NSWidth(baseFrame) - self.borderWidth, NSHeight(baseFrame) - self.borderWidth) xRadius:_cornerRadius yRadius:_cornerRadius];
+
+        
         [NSGraphicsContext saveGraphicsState];
-        if (innerShadowFlag) {
-            [innerShadow set];
-        }
+//        if (innerShadowFlag) {
+//            [innerShadow set];
+//        }
         [self.borderColor setStroke];
         [borderPathPath setLineWidth: self.borderWidth];
         [borderPathPath stroke];
@@ -452,27 +461,27 @@
         [whiteBackgroundPath fill];
         
         
-        //// Stripe2 Drawing
-        NSBezierPath* stripe2Path = [NSBezierPath bezierPath];
-        [stripe2Path moveToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame))];
-        [stripe2Path lineToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame) + 0.50000 * NSHeight(frame))];
-        [stripe2Path lineToPoint: NSMakePoint(NSMinX(frame) + 0.50000 * NSWidth(frame), NSMaxY(frame))];
-        [stripe2Path lineToPoint: NSMakePoint(NSMinX(frame), NSMaxY(frame))];
-        [stripe2Path lineToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame))];
-        [stripe2Path closePath];
-        [color setFill];
-        [stripe2Path fill];
-        
-        
-        //// Stripe1 Drawing
-        NSBezierPath* stripe1Path = [NSBezierPath bezierPath];
-        [stripe1Path moveToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame))];
-        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame) + 0.50000 * NSWidth(frame), NSMinY(frame))];
-        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame) + 0.50000 * NSHeight(frame))];
-        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame))];
-        [stripe1Path closePath];
-        [[NSColor blackColor] setFill];
-        [stripe1Path fill];
+//        //// Stripe2 Drawing
+//        NSBezierPath* stripe2Path = [NSBezierPath bezierPath];
+//        [stripe2Path moveToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame))];
+//        [stripe2Path lineToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame) + 0.50000 * NSHeight(frame))];
+//        [stripe2Path lineToPoint: NSMakePoint(NSMinX(frame) + 0.50000 * NSWidth(frame), NSMaxY(frame))];
+//        [stripe2Path lineToPoint: NSMakePoint(NSMinX(frame), NSMaxY(frame))];
+//        [stripe2Path lineToPoint: NSMakePoint(NSMaxX(frame), NSMinY(frame))];
+//        [stripe2Path closePath];
+//        [color setFill];
+//        [stripe2Path fill];
+//        
+//        
+//        //// Stripe1 Drawing
+//        NSBezierPath* stripe1Path = [NSBezierPath bezierPath];
+//        [stripe1Path moveToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame))];
+//        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame) + 0.50000 * NSWidth(frame), NSMinY(frame))];
+//        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame) + 0.50000 * NSHeight(frame))];
+//        [stripe1Path lineToPoint: NSMakePoint(NSMinX(frame), NSMinY(frame))];
+//        [stripe1Path closePath];
+//        [[NSColor blackColor] setFill];
+//        [stripe1Path fill];
         
         return YES;
     }];

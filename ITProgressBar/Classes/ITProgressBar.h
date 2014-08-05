@@ -43,9 +43,14 @@
 @interface ITProgressBar : NSView
 
 /**
+ *  The radius of the progress bar's corners
+ */
+@property (nonatomic) CGFloat cornerRadius;
+
+/**
  *  Indicates the progress of the operation
  */
-@property (nonatomic, nonatomic) CGFloat floatValue;
+@property (nonatomic) CGFloat floatValue;
 
 /**
  *  Sets the color tint

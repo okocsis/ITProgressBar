@@ -38,8 +38,6 @@
 
 @interface ITAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
-@property (assign) IBOutlet ITProgressBar *progressBar;
-@property (assign) IBOutlet NSLayoutConstraint *heightConstraint;
+
 
 @end

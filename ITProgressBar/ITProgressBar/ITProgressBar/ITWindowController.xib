@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ITWindowController">
+            <connections>
+                <outlet property="heightConstraint" destination="Wdj-1u-z9v" id="Jiq-iZ-Fiv"/>
+                <outlet property="progressBar" destination="V7u-O8-zzI" id="ENA-AF-xEm"/>
+                <outlet property="window" destination="my1-e8-ZFt" id="GZn-fk-vwu"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application"/>
+        <window title="ITProgressBar" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="my1-e8-ZFt">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="335" y="390" width="494" height="178"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <view key="contentView" wantsLayer="YES" id="5ci-wk-avv">
+                <rect key="frame" x="0.0" y="0.0" width="494" height="178"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="V7u-O8-zzI" customClass="ITProgressBar">
+                        <rect key="frame" x="187" y="7" width="300" height="10"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" priority="469" constant="300" id="D5f-Ml-daz"/>
+                            <constraint firstAttribute="height" constant="10" id="Wdj-1u-z9v"/>
+                        </constraints>
+                        <shadow key="shadow">
+                            <size key="offset" width="0.0" height="-1"/>
+                            <color key="color" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                        </shadow>
+                    </customView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i6y-0T-c6x">
+                        <rect key="frame" x="14" y="130" width="466" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Toggle Animation" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Bs-3b-hNV">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="toggleAnimation:" target="-2" id="zoB-06-vSS"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zOV-7f-Kw0">
+                        <rect key="frame" x="14" y="97" width="466" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Toggle Hidden" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C8a-Jw-xwb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="toggleHidden:" target="-2" id="MZ8-KA-acq"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aic-yC-ofs">
+                        <rect key="frame" x="18" y="66" width="458" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="VWI-ry-sg2"/>
+                        <connections>
+                            <action selector="setFloatValue:" target="-2" id="aWT-dg-zch"/>
+                        </connections>
+                    </slider>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AmD-My-vFO">
+                        <rect key="frame" x="18" y="42" width="458" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="5" maxValue="60" doubleValue="10" tickMarkPosition="above" sliderType="linear" id="7hA-rG-hbu"/>
+                        <connections>
+                            <action selector="setHeight:" target="-2" id="fkd-PO-cYo"/>
+                        </connections>
+                    </slider>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="i6y-0T-c6x" secondAttribute="trailing" constant="20" symbolic="YES" id="3pi-E5-b1e"/>
+                    <constraint firstAttribute="trailing" secondItem="V7u-O8-zzI" secondAttribute="trailing" constant="7" id="5pf-we-i6R"/>
+                    <constraint firstItem="aic-yC-ofs" firstAttribute="leading" secondItem="zOV-7f-Kw0" secondAttribute="leading" id="8gh-fX-Umz"/>
+                    <constraint firstItem="zOV-7f-Kw0" firstAttribute="leading" secondItem="i6y-0T-c6x" secondAttribute="leading" id="A94-HX-1cc"/>
+                    <constraint firstItem="V7u-O8-zzI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5ci-wk-avv" secondAttribute="leading" constant="7" id="CGc-i2-7P4"/>
+                    <constraint firstItem="aic-yC-ofs" firstAttribute="top" secondItem="zOV-7f-Kw0" secondAttribute="bottom" constant="20" symbolic="YES" id="FWh-Ef-uxE"/>
+                    <constraint firstItem="AmD-My-vFO" firstAttribute="trailing" secondItem="aic-yC-ofs" secondAttribute="trailing" id="OzQ-3D-3Ah"/>
+                    <constraint firstItem="i6y-0T-c6x" firstAttribute="leading" secondItem="5ci-wk-avv" secondAttribute="leading" constant="20" symbolic="YES" id="RZh-0G-o9t"/>
+                    <constraint firstItem="i6y-0T-c6x" firstAttribute="top" secondItem="5ci-wk-avv" secondAttribute="top" constant="20" symbolic="YES" id="aa2-Qh-IA9"/>
+                    <constraint firstItem="aic-yC-ofs" firstAttribute="leading" secondItem="AmD-My-vFO" secondAttribute="leading" id="j0v-Bx-G9A"/>
+                    <constraint firstAttribute="bottom" secondItem="V7u-O8-zzI" secondAttribute="bottom" constant="7" id="mBP-HP-Agt"/>
+                    <constraint firstItem="i6y-0T-c6x" firstAttribute="trailing" secondItem="zOV-7f-Kw0" secondAttribute="trailing" id="nzA-fM-qj8"/>
+                    <constraint firstItem="zOV-7f-Kw0" firstAttribute="top" secondItem="i6y-0T-c6x" secondAttribute="bottom" constant="12" symbolic="YES" id="q6N-GE-ore"/>
+                    <constraint firstItem="V7u-O8-zzI" firstAttribute="top" secondItem="AmD-My-vFO" secondAttribute="bottom" constant="27" id="sDQ-gW-nMj"/>
+                    <constraint firstItem="AmD-My-vFO" firstAttribute="top" secondItem="aic-yC-ofs" secondAttribute="bottom" constant="8" symbolic="YES" id="uHw-C7-Rbo"/>
+                    <constraint firstItem="aic-yC-ofs" firstAttribute="trailing" secondItem="zOV-7f-Kw0" secondAttribute="trailing" id="x5b-yA-DdD"/>
+                </constraints>
+            </view>
+            <contentBorderThickness minY="24"/>
+        </window>
+    </objects>
+</document>

@@ -34,29 +34,17 @@
 //
 
 #import "ITAppDelegate.h"
+#import "ITWindowController.h"
+@interface ITAppDelegate ()
+@property (nonatomic, strong) ITWindowController * windowController;
+@end
 
 @implementation ITAppDelegate
 
-- (IBAction)toggleAnimation:(id)sender {
-    self.progressBar.animates = !self.progressBar.animates;
-}
-
-- (IBAction)toggleHidden:(id)sender {
-    [CATransaction begin]; {
-        // Comment-out to disable animation
-        // [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
-        
-        [self.progressBar setHidden:!self.progressBar.isHidden];
-    }[CATransaction commit];
-}
-
-- (IBAction)setFloatValue:(id)sender {
-    [self.progressBar.animator setFloatValue:[sender doubleValue]];
-}
-
-- (IBAction)setHeight:(id)sender {
-    self.heightConstraint.constant = [sender doubleValue];
-    [self.window setContentBorderThickness:[sender doubleValue] + (7 * 2) forEdge:NSMinYEdge];
+-(void)applicationDidFinishLaunching:(NSNotification *)notification
+{
+    _windowController = [[ITWindowController alloc]initWithWindowNibName:@"ITWindowController"];
+    [_windowController showWindow:self];
 }
 
 @end
